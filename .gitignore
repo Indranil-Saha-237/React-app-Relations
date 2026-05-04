@@ -1,0 +1,16 @@
+node_modules/
+npm-debug.log*
+.env
+.DS_Store
+coverage/
+*.log
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# OS files
+Thumbs.db
+
+# VS Code
+.vscode/
