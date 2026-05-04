@@ -49,7 +49,31 @@ Verify: node --version && npm --version
   docker compose up --build
 
 
-## ── STEP 4: Open the app ─────────────────────────────────────
+## ── STEP 5: Jenkins integration ─────────────────────────────
+
+1. Add the `Jenkinsfile` to your repository root.
+2. Install Jenkins and these plugins:
+   - Pipeline
+   - Git
+   - Docker Pipeline (if using Docker build commands)
+3. Create a new Jenkins Pipeline job.
+4. Point the job to your GitHub repository URL.
+5. Choose `Pipeline script from SCM` and set:
+   - SCM: Git
+   - Repository URL: `https://github.com/<your-user>/<your-repo>.git`
+   - Branch: `main` (or your branch)
+   - Script Path: `Jenkinsfile`
+6. Save and run the job.
+
+The pipeline will:
+  - check out the code
+  - install Node dependencies with `npm ci`
+  - build the Docker image
+  - validate `docker compose` configuration
+  - start the services and verify the app responds on `http://localhost:3000`
+
+
+## ── STEP 6: Open the app ─────────────────────────────────────
 
   http://localhost:3000
 
